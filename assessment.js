@@ -36,12 +36,19 @@ function daBears() {
         var isDinner = true;
     }
 }
+// this function dose not return enything.
 
 // Remove entries from the following arrays until only correct answers remain.
 // A correct answer will be an array of strings that are function names.
 
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
+
+  /* 
+     these function without return anything it just declraer a var .
+     it will return Undefinde .
+     but if we it was return it will return 
+  */  
 
 var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
@@ -73,8 +80,11 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // Write a constructor function called Vehicle.  Vehicle should have a property
 // called gasRemaining that is equal to 100.
 
-// Next, assign a function called drive to the Vehicle prototype.  When invoked,
-// drive should subtract 25 from the gasRemaining property of any Vehicle your constructor
+
+// Next, assign a function called drive to the Vehicle prototype.
+//  When invoked,
+// drive should subtract 25 from the gasRemaining 
+// property of any Vehicle your constructor
 // function creates.
 
 // Create 2 new Vehicles with the constructor function you made: one called "charger",
@@ -82,8 +92,27 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // "charger" once, and invoke it twice on "mustang".
 
 // CODE HERE...
+// using pesudoclassical.
 
+var Vehicle = function(){
+    this.gasRemaining = 100;
+}
+Vehicle.prototype.count = function(){
+   this.gasRemaining++;
+}
+var Drive = function(){
+    Vehicle.call(this);
+} 
+Drive.prototype = Object.create(Vehicle.prototype);
+Drive.prototype.constructor = Drive;
 
+Drive.prototype.substract = function(){
+    this.gasRemaining -= 25;
+}
+var charge = new Vehicle();
+var mustang = new Vehicle();
+
+charge.count();
 
 
 
@@ -109,7 +138,12 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
-
+var Strings = function(str){
+    this.string = str;
+}
+Strings.prototype.grammarPolice = function(){
+  this.string = this.string[0].toLocaleLowerCase() + this.string.toUpperCase();
+}
 
 // *************
 // * PROBLEM 4 *
